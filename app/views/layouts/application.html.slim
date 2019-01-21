@@ -1,0 +1,21 @@
+doctype html
+html
+
+  .header
+    header.logo_img
+      a href="/"
+        img alt="Логотип Оттепель" src="#{asset_path 'Shapka.jpg'}" width = 700
+    hr style=(" color: steelblue;   margin-left:  -25px;")
+    title
+      | Blog
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    = yield
+  .footer
+    hr
+    p
+     small Copyright 2019 Ottepel`SPB All rights reserved. &copy;
+    p Посещений сайта - #{session[:times_here]}!
