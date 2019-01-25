@@ -1,12 +1,15 @@
 namespace :rand_users do
-  task rand_users: :environment do
-    User.destroy_all
-    u = User.all.sample
-    p = Post.create(user: u)
-  # пока не разобрался, каким образом создать массив из имен и email-ов (назову его, скажем, users_rand), но думаю, что потом можно применить команду вроде
-  # u = User.create users_rand
-  # но наверняка еще лучше для теста дать права модератора и создателя некоторым пользователям
-  # Может, для упрощения этих действий есть гем?
-  # А так я пока запутался немного. После занятия подправлю или если останутся вопросы, напишу вам
+desc 'fills test table with a random data'
+  task run: :environment do
+    #User.destroy_all
+    user = User.create! name: 'test_user2', email: 'email2@email.com'
+    puts 'User created'
+    post = Post.create! title: 'test_post2', body: 'test_post_body_is_not_to_short', user: user
+    puts 'Post created'
+    comment = Comment.create! body: 'test-comment', user: user, post: post
+    puts 'Comment created'
+    mark = Mark.create! value: 5, user: user, post: post, comment: comment
+    puts 'Mark created'
+
   end
 end

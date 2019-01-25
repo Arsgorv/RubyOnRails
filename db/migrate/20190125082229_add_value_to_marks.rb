@@ -1,0 +1,5 @@
+class AddValueToMarks < ActiveRecord::Migration[5.2]
+  def change
+    add_column :marks, :value, :integer
+  end
+end
