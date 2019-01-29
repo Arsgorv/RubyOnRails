@@ -45,6 +45,7 @@ group :development do
 end
 
 gem 'slim-rails'
+gem 'kaminari'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

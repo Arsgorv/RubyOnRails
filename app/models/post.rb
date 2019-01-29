@@ -7,5 +7,9 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :commentators, through: :comments, source: :user
 
+#  def self.written_by_moderators
+#    Post.joins(:user).where(users: {moderator:true}).count
+#  end
 
+  scope :written_by_moderator, -> {joins(:user).where(users: {moderator: true})}
 end
